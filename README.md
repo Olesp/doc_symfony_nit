@@ -1,4 +1,4 @@
-# Symfony-nit-
+# Symfony{nit}
 Bonjour et bienvenue sur ce cours d'initiation au framework Symfony 4.
 Symfony est un framework PHP développé par SensioLabs.
 
