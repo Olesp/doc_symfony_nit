@@ -1,4 +1,5 @@
-# Symfony{nit}
+<img src="./media/symfonynit.png" width="300" height="120" alt="Symfony{nit}">
+
 Bonjour et bienvenue sur ce cours d'initiation au framework Symfony 4.
 Symfony est un framework PHP développé par SensioLabs.
 
