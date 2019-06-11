@@ -1,7 +1,5 @@
 Chapitre 1 :
 ===
-Let's get started !
----
 
 Dans ce premier chapitre nous allons nous concentrer dans un premier temps à l'installation et au paramétrage de votre environnement de travail pour vous permettre de commencer à développer au plus vite. Puis vous afficherez votre première page grâce à Symfony.
 
