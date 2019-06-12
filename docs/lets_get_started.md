@@ -1,7 +1,5 @@
 Chapitre 1 :
 ===
-Let's get started !
----
 
 Dans ce premier chapitre nous allons nous concentrer dans un premier temps à l'installation et au paramétrage de votre environnement de travail pour vous permettre de commencer à développer au plus vite. Puis vous afficherez votre première page grâce à Symfony.
 
@@ -46,9 +44,9 @@ Vous pouvez constater lorsque vous l'ouvrez que une fonction existe déjà et qu
 Nous allons regarder ça de plus près.
 ##### Annotations
 ```php
-    /**
-     * @Route("/", name="app_index")
-     */
+/**
+ * @Route("/", name="app_index")
+ * */
 ```
 Comme vous pouvez le voir l'annotation commence par le traditionnel /* mais nous avons un * en plus. C'est un format d'annotation spéciale qui sera, à l'inverse d'un commentaire, interprété par le framework.
 Cette annotation peut contenir plusieurs informations pour indiquer des comportements.
@@ -59,21 +57,20 @@ L'annotation prend en premier "paramètre" une string indiquant la route sur laq
 Il est possible de customiser l'URL de votre route. 
 Par exemple :
 ```php
-    /**
-     * Cette route répond pour /app seulement
-     * @Route("/app", name="app_index")
-     * /
-    
-    /**
-     * Cette route répond pour /app/test
-     * mais pas pour /app/test/page1
-     * @Route("/app/{var}", name="app_var")
-     * /
+/**
+ * Cette route répond pour /app seulement
+ * @Route("/app", name="app_index")
+ * */
+/**
+ * Cette route répond pour /app/test
+ * mais pas pour /app/test/page1
+ * @Route("/app/{var}", name="app_var")
+ * */
 ```
 Il est aussi possible de spécifier une valeur par défaut de {var} ou de lui imposer un type.
 Pour consulter toutes les possiblités vous pouvez consulter [ce lien](https://symfony.com/doc/current/routing.html) car nous ne nous attarderons pas sur ces dernières dans ce cours.
 
-#### La méthode render()
+##### La méthode render()
 Chaque méthode de votre controller doit **obligatoirement** retourner quelque chose.
 Dans la plupart des cas, du moins dans notre application, cela sera une ressource que le navigateur pourra afficher pour votre utilisateur.
 ```php
@@ -81,3 +78,27 @@ return $this->render("app/index.html.twig", [
     'name' => $name
 ]);
 ```
+Cette methode est en fait une simplification de la methode response() dans laquelle vous devez indiquer la nature de la réponse et insérer à la main le HTML par exemple.
+Lorsque que l'on regarde en détail elle prend en arguments une chaine de caractères, qui indique en fait l'emplacement d'un template Twig. Nous parlerons de Twig plus loin. En second paramètre elle accepte un tableau qui contient en fait toutes les options que nous voulons utiliser, par exemple dans ce cas, nous passons ```name```.   
+``` name ``` est une variable Twig qui contient la valeur de ``` $name ```. Elle pourra ainsi être affichée par Twig lors du rendu de la page.
+Plus d'informations sur la méthode render() peuvent être trouvé sur [la documentation Symfony]()
+
+#### Twig
+Twig est un moteur de rendu utilisé par défaut avec le framework Symfony. Un moteur de framework permet de préparer des templates et de les adapter en fonction des informations données par le controller. Les avantages de ce moteur sont qu'il est rapide, sûr et surtout flexible. Vous verrez qu'il embarque pas mal de fonctions permettant de soulager votre controller lors de l'affichage des données.
+
+##### Index.html.twig
+Lors de la création de votre controller je vous avais parlé d'une vue Twig créée par défaut. Eh bien pour la consulter il suffit de vous rendre dans le dossier ```template``` de votre app. Et normalement dans un dossier portant le nom de la route associée vous devriez trouver ce fameux fichier. Ouvrons-le et jetons-y un oeil.
+
+##### {% expression %}
+Cette expression est propre à Twig et permet d'effectuer des opéarations mathématiques à l'intérieur de votre vue mais aussi d'effectuer des opérations logiques.
+```twig
+{% extends "base.html.twig" %}
+```
+Cette première ligne de votre fichier est comme je vous le disais une expression logique. Elle permet d'étendre le fichier "base.html.twig", logique non ?
+Ce qui veux dire que le fichier de base sera celui indiqué et les blocs ```{% block body %}``` de ce dernier seront remplacés par le blocs body de notre fichier index. 
+
+##### {{ var }}
+Rappelez-vous lors de l'appel de la fonction render() dans le controller, nous passions par exemple une variable ```'name'=>$name```. Si nous voulions l'afficher dans notre vue Twig il suffirait d'utiliser l'expression ```{{ name }}```.
+Il faut utiliser le nom de la clé de votre tableau.
+
+Pour en savoir plus sur les expressions et le traitement de données de Twig vous pouvez consulter la [documentation officielle](https://twig.symfony.com/doc/2.x/templates.html#expressions).
