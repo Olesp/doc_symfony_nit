@@ -1,4 +1,4 @@
-<img src="//raw.githubusercontent.com/Olesp/doc_symfony_nit/master/docs/media/logo_symfony_nit.png" width="300" height="120" alt="Logo Symfony{nit}">
+<img src="//raw.githubusercontent.com/Olesp/doc_symfony_nit/master/docs/media/logo_symfony_nit.png" width="300" height="120" style="display: block;margin-left: auto;margin-right: auto;" alt="Logo Symfony{nit}">
 
 Bonjour et bienvenue sur ce cours d'initiation au framework Symfony 4.
 Symfony est un framework PHP développé par SensioLabs.
