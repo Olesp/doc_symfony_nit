@@ -4,7 +4,7 @@ Chapitre 1 :
 Dans ce premier chapitre nous allons nous concentrer dans un premier temps sur l'installation et le paramétrage de votre environnement de travail pour vous permettre de commencer à développer au plus vite. Puis vous afficherez votre première page grâce à Symfony.
 
 ### Installation de Symfony
-#### Prérequis :
+#### Prérequis
 Vous devez vous assurer d'avoir d'installé sur votre machine :
 + PHP 7.2 minimum et les extensions suivantes :
   + xml
