@@ -22,6 +22,20 @@
     window.$docsify = {
       loadSidebar: true,
       coverpage: true,
+      plugins: [
+        function(hook) {
+          var footer = [
+            '<hr>',
+            '<footer>',
+            '<span>Projet réalisé par <a href="https://github.com/Olesp" target="_blank">Olivier Lespagnon</a> et <a href="https://github.com/beamop" target="_blank">Marwâne Chahed</a> &copy; 2019.</span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function(html) {
+            return html + footer;
+          });
+        }
+      ],
       ga: 'UA-141837806-1',
       name: '',
       repo: '',
