@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Olesp/doc_symfony_nit/master/docs/media/logo_symfony_nit.jpg" style="display: block;margin-left: auto;margin-right: auto;" alt="Logo Symfony{nit}">
+![logo symfony{nit}](docs/assets/img/logo_symfony_nit.jpg)
 
 Bonjour et bienvenue sur ce cours d'initiation au framework Symfony 4.
 <br>
@@ -16,4 +16,4 @@ Si vous avez besoin d'apprendre la POO php vous pouvez le faire sur le sitre d'O
 En partenariat avec :
 <br>
 
-<img src="https://raw.githubusercontent.com/Olesp/doc_symfony_nit/master/docs/media/logo_jolicode.jpg" style="display: block;margin-left: auto;margin-right: auto;" alt="Logo Jolicode">
+![logo symfony{nit}](docs/assets/img/logo_jolicode.jpg)

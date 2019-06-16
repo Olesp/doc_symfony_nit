@@ -1,3 +1,9 @@
 .app-nav.no-badge {
     margin-right: 75px;
 }
+
+.markdown-section img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
