@@ -66,9 +66,9 @@ Par exemple :
  * Cette route répond pour /app seulement
  * @Route("/app", name="app_index")
  * */
+
 /**
- * Cette route répond pour /app/test
- * mais pas pour /app/test/page1
+ * Cette route répond pour /app/test mais pas pour /app/test/page1
  * @Route("/app/{var}", name="app_var")
  * */
 ```
