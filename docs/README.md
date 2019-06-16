@@ -10,8 +10,7 @@ Durant ce cours vous allez apprendre les notions élémentaires du framework et 
 Avant de commencer le cours il est nécessaire de valider les prérequis suivant :
 1. Connaître la programation orientée objet PHP
 2. Disposer de connaisances de base en développement web
-Si vous avez besoin d'apprendre la POO php vous pouvez le faire sur le sitre d'OpenClassroom :
-[Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php).
+3. Concepts de base de la POO : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
 
 En partenariat avec :
 <br>
