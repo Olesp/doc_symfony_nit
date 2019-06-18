@@ -56,4 +56,41 @@ if ($form->isSubmitted() && $form->isValid()) {
 Si le formulaire est valide on ajoute un message flash pour le rendu et on redirige l'utilisateur vers notre route "app_index".
 Prenons le temps de noter quelques détails ici qui ne vous choquent peut être pas au premier regard mais qui valent la peine d'être soulignés.
 Premièrement ```addFlash()``` ajoute directement un message flash dans les variables de session sans plus de manipulation. Vous pouvez consulter [sa page de documentation](https://symfony.com/doc/current/controller.html#flash-messages) pour vous rendre compte des possibilités que cela implique.
-Deuxièmement ```redirectToRoute()``` est capable de prendre le nom de votre route sans avoir à lui préciser son URL, c'est utile si jamais vous souhaitez modifier cette URL sans avoir besoin de la rechanger partout dans votre code.
+Deuxièmement ```redirectToRoute()``` est capable de prendre le nom de votre route sans avoir à lui préciser son URL, c'est utile si jamais vous souhaitez modifier cette URL sans avoir besoin de la rechanger partout dans votre code. Rediriger l'utilisateur après traitement et validation d'un formulaire permet d'éviter son renvoi accidentel d'un utilisateur distrait et provoquer des éventuelles erreurs.
+```php
+if ($form->isSubmitted() && $form->isValid()) {
+    $links->setDate(new \DateTime('now'));
+
+    $em->persist($links);
+    $em->flush();
+
+    $this->addFlash("linkAdded", "Votre lien a bien été ajouté !");
+    return $this->redirectToRoute("app_index");
+}
+
+return $this->render("app/index.html.twig", [
+    "form" => $form->createView(),
+    "linkList" => $linkList
+]);
+```
+Juste en dessous de notre ```if``` on trouve un la méthode ```render()``` dont je vous parlais plus tôt qui render la page désirée. Le changement que vous pouvez remarquer ici est la valeur de la variable ```form```.
+```createView()``` indique que la variable transmise est en fait un formulaire et demande à être affiché lors du rendu de la page. Des "propriétés" Twig pour l'objet ```form``` seront donc créées pour être utilisé lors de ce rendu. Elle contiendront par exemple les lignes du formulaires, les messages d'erreurs, les noms des champs, etc...
+
+### ORM
+Si vous êtes observateur, vous aurez sans doute remarquées les quelques lignes de code en plus dans l'instruction ```if``` un peu plus haut.
+Elles concernent en fait la gestion de la base de données dans laquelle vos liens finiront et dans laquelle votre application piochera afin de les afficher pour l'utilisateur.
+#### Doctrine ?
+Le framework Symfony s'appuie sur un ORM pour gérer ses bases de données. En l'occurrence cet ORM se nomme Doctrine. 
+Un ORM sert à gérer de manière complètement invisible pour le développeur les interactions avec la base de données. Mais à quoi cela peut-il bien servir me demanderez-vous ?
+Eh bien dans un premier temps, cela vous évite les mauvaises manipulations ou bien les mauvais type de variables entrées dans les mauvais champs. On peut donc rapidement écarter les passages en revue des requêtes SQL quand votre application commence à faire des siennes. Et c'est déjà pas mal comme gain de temps.
+De plus Doctrine gère la "protection" basique de votre base de données en évitant les attaques les plus répandues connues à ce jour.
+[Ce lien](https://symfony.com/doc/current/doctrine.html) vous mènera à la page de Doctrine si vous êtes désireux d'en apprendre plus immédiatement.
+#### Entity manager
+Pour commencer à utliser Doctrine et gérer un BDD, il vous faudra ajouter une ligne au début de votre méthode ```index()```
+```php
+$em = $this->getDoctrine()->getManager();
+```
+Cette ligne instancie le composant Entity Manager de Doctrine.
+#### Envoyer des données en BDD
+Avec lui, vous pourrez récupérer vos données simplement.
+Il nous faut donc maintenant être capable
