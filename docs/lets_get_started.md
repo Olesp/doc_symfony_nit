@@ -47,6 +47,13 @@ Il est temps d'afficher votre controller et de commencer à développer.
 Sur ce document situé dans ```src/Controller```.
 Vous pouvez constater lorsque vous l'ouvrez qu'une fonction existe déjà et qu'elle comporte une annotation un peu spéciale.
 Nous allons regarder ça de plus près.
+
+```
+/**
+ * Voici le mot de passe pour les goodies : b39aU2ZQa
+ * */
+```
+
 ##### Annotations
 ```php
 /**
